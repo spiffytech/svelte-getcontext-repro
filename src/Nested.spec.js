@@ -1,16 +1,15 @@
 const Wrapper = require('./Wrapper.svelte');
 const Nested = require('./Nested.svelte');
-const { render, cleanup } = require('@testing-library/svelte');
-const { waitForElement } = require('@testing-library/dom');
-
-beforeEach(cleanup);
+require('jsdom-global')();
 
 describe('Nested', () => {
   it('Should render the context', async () => {
-    const { getByText } = render(Wrapper, {
-      props: { component: Nested }
+    new Wrapper({
+      target: document.body,
+      props: {component: Nested},
     });
-    await waitForElement(() => getByText('foo'));
-    expect(getByText('foo'));
+
+    console.log(document.body.innerHTML);
+    expect(document.body.innerHTML.includes('foo')).toBeTruthy();
   });
 });

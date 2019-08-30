@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@testing-library/svelte": "^1.8.0",
     "jest": "^24.9.0",
     "jest-transform-svelte": "^2.0.2",
     "svelte": "^3.9.1"
+  },
+  "dependencies": {
+    "jsdom-global": "^3.0.2"
   }
 }
